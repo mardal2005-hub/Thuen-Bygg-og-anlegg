@@ -225,6 +225,26 @@ header.hide{transform:translateY(-102%)}
 .area-marq .marq-track .it{font-family:var(--ff-serif);font-style:italic;color:var(--ink);font-size:clamp(18px,2vw,26px);padding:14px 0}
 .area-marq .marq-track .it::after{content:"/";color:var(--accent);opacity:.7;margin:0 26px}
 
+/* ================= REVIEWS ================= */
+.rev-hero{display:flex;align-items:center;gap:clamp(24px,5vw,60px);flex-wrap:wrap;padding-bottom:clamp(38px,5vw,58px);margin-bottom:clamp(36px,4vw,52px);border-bottom:1px solid var(--line)}
+.rev-score{display:flex;flex-direction:column;gap:8px}
+.rev-score .big{font-family:var(--ff-serif);font-weight:500;font-size:clamp(58px,9vw,108px);line-height:.85;letter-spacing:-.02em}
+.rev-score .stars{color:var(--accent-2);font-size:19px;letter-spacing:4px}
+.rev-hero .rev-meta{flex:1;min-width:230px}
+.rev-hero .rev-meta .gbadge{font-family:var(--ff-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2);margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.rev-hero .rev-meta .gbadge .gg{width:18px;height:18px}
+.rev-hero .rev-meta p{color:var(--muted);font-size:clamp(16px,1.4vw,19px);line-height:1.55;max-width:44ch}
+.rev-hero .rev-meta .btn{margin-top:22px}
+.rev-grid{columns:3;column-gap:clamp(14px,1.5vw,20px)}
+.rev-card{break-inside:avoid;-webkit-column-break-inside:avoid;margin:0 0 clamp(14px,1.5vw,20px);background:var(--bg-2);border:1px solid var(--line);padding:26px 24px 22px;transition:border-color .35s var(--ease)}
+.rev-card:hover{border-color:var(--line-2)}
+.rev-card .stars{color:var(--accent-2);font-size:13px;letter-spacing:2px;margin-bottom:15px}
+.rev-card p{font-size:15px;line-height:1.62;color:var(--text)}
+.rev-card .who{margin-top:20px;display:flex;align-items:center;gap:12px;padding-top:17px;border-top:1px solid var(--line)}
+.rev-card .who .av{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--ff-serif);font-size:16px;flex:none}
+.rev-card .who b{font-size:14px;font-weight:600;display:block;line-height:1.2}
+.rev-card .who span{font-family:var(--ff-mono);font-size:10px;color:var(--muted-2);letter-spacing:.04em;text-transform:uppercase}
+
 /* ================= BIG CTA ================= */
 .cta-band{position:relative;background:var(--bg);overflow:hidden;text-align:center;padding-block:clamp(80px,11vw,150px)}
 .cta-band .glow{position:absolute;width:80vw;height:60vw;left:10vw;bottom:-30vw;border-radius:50%;background:radial-gradient(circle,rgba(46,96,168,.14),transparent 60%);pointer-events:none}
@@ -282,6 +302,7 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
 @media(max-width:1024px){
   .svc-grid{grid-template-columns:repeat(2,1fr)}
   .proj-grid{grid-template-columns:repeat(2,1fr)}
+  .rev-grid{columns:2}
   .pcard.tall{grid-row:auto}
   .why-grid{grid-template-columns:1fr 1fr}
   .why:nth-child(2){border-right:none}
@@ -299,6 +320,7 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
   .sechead .num{padding-top:0}
   .svc-grid{grid-template-columns:1fr}
   .proj-grid{grid-template-columns:1fr}
+  .rev-grid{columns:1}
   .stat-list{grid-template-columns:1fr}
   .why-grid{grid-template-columns:1fr}
   .why{border-right:none}
@@ -335,7 +357,7 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
       <a href="#tjenester">Tjenester</a>
       <a href="#prosjekter">Prosjekter</a>
       <a href="#om">Om oss</a>
-      <a href="#omrade">Område</a>
+      <a href="#anmeldelser">Anmeldelser</a>
       <a href="#kontakt">Kontakt</a>
     </div>
     <div class="nav-right">
@@ -351,7 +373,8 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
   <a href="#prosjekter">Prosjekter <span class="n">02</span></a>
   <a href="#om">Om oss <span class="n">03</span></a>
   <a href="#omrade">Område <span class="n">04</span></a>
-  <a href="#kontakt">Kontakt <span class="n">05</span></a>
+  <a href="#anmeldelser">Anmeldelser <span class="n">05</span></a>
+  <a href="#kontakt">Kontakt <span class="n">06</span></a>
   <div class="mmf">THUEN BYGG OG ANLEGG<br>Haugalandet og omegn<br>Tlf. 41 195 195</div>
 </div>
 
@@ -403,7 +426,7 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
         <div class="stat"><div class="sv">A<span class="u">–</span>Å</div><div class="sl">Totalansvar fra graving til ferdig uterom</div></div>
         <div class="stat"><div class="sv">Egne<span class="u">.</span></div><div class="sl">Maskiner og folk — kontroll på hvert ledd</div></div>
         <div class="stat"><div class="sv">Fast<span class="u">.</span></div><div class="sl">Tydelig pris før vi setter spaden i jorda</div></div>
-        <div class="stat"><div class="sv">Lokal<span class="u">.</span></div><div class="sl">Forankret på Haugalandet — kjent grunn og klima</div></div>
+        <div class="stat"><div class="sv">5,0<span class="u">★</span></div><div class="sl">Snittvurdering på Google · 7 av 7 femmere</div></div>
       </div>
     </div>
   </div>
@@ -559,9 +582,9 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
     </div>
     <div class="about-grid">
       <div class="about-body rv">
-        <h2>Betong som <i>varer.</i></h2>
-        <p>Thuen Bygg &amp; Anlegg AS er en betongentreprenør på Haugalandet. Vi støper støttemurer, garasjer og uteanlegg — og har spesialisert oss på bord-forskaling, der treverket setter et levende, varig preg i betongen.</p>
-        <p>Enten det er en rett mur, en buet spesialstøp eller en vedlikeholdsfri garasje med terrasse, gjør vi grunnarbeidet skikkelig, holder byggeplassen ryddig og leverer et resultat som står. For boligeiere så vel som byggefirma som trenger en solid medspiller.</p>
+        <h2>Spesialister på <i>forskaling &amp; betongstøping.</i></h2>
+        <p>Thuen Bygg &amp; Anlegg AS leverer solide løsninger for både små og store byggeprosjekter. Med lang erfaring og høy kompetanse på betongarbeid sørger vi for at ditt prosjekt får den kvaliteten og presisjonen det fortjener.</p>
+        <p>Vi jobber effektivt og nøye, og benytter moderne utstyr og teknikker for å sikre holdbare og bærekraftige betongkonstruksjoner. Enten det gjelder fundamenter, støttemurer eller gulvstøping, har vi erfaringen som skal til for å levere et profesjonelt resultat — til avtalt tid og pris.</p>
       </div>
       <div class="about-facts rv rv-d1">
         <div class="afr"><div class="k">Base</div><div class="v">Haugalandet</div></div>
@@ -610,6 +633,70 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
   </div>
 </section>
 
+<!-- ========== REVIEWS ========== -->
+<section class="sec" id="anmeldelser">
+  <div class="wrap">
+    <div class="sechead rv">
+      <div class="num">07 — ANMELDELSER</div>
+      <div class="ht">
+        <span class="ey eyt">Anmeldelser</span>
+        <h2 class="big">Kundene gir oss <i>toppkarakter.</i></h2>
+      </div>
+    </div>
+    <div class="rev-hero rv">
+      <div class="rev-score">
+        <div class="big">5,0</div>
+        <div class="stars" aria-label="5 av 5 stjerner">★★★★★</div>
+      </div>
+      <div class="rev-meta">
+        <div class="gbadge">
+          <svg class="gg" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg>
+          Snittvurdering på Google · 7 anmeldelser
+        </div>
+        <p>Sju av sju kunder har gitt Thuen toppkarakter. Vi er stolte av tilbakemeldingene — og enda mer opptatt av å fortjene den neste.</p>
+        <a href="https://www.google.com/search?q=Thuen+Bygg+og+Anlegg+AS" target="_blank" rel="noopener" class="btn ghost">Les alle på Google <span class="ar">→</span></a>
+      </div>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card rv">
+        <div class="stars" aria-label="5 av 5">★★★★★</div>
+        <p>«Thuen Bygg &amp; Anlegg gjennomførte et helt topp arbeid med støpning av ny trapp til kjellerhals, samt platting etterpå. Dyktige og servicemindede fagfolk som leverer 100 %. Anbefales på det sterkeste.»</p>
+        <div class="who"><span class="av">O</span><span><b>Ole Georg Østevik</b><span>via Google</span></span></div>
+      </div>
+      <div class="rev-card rv rv-d1">
+        <div class="stars" aria-label="5 av 5">★★★★★</div>
+        <p>«Gjorde en fantastisk jobb med dobbel garasje og terrasse. Kjempefornøyd!!!»</p>
+        <div class="who"><span class="av">T</span><span><b>toregang</b><span>via Google</span></span></div>
+      </div>
+      <div class="rev-card rv rv-d2">
+        <div class="stars" aria-label="5 av 5">★★★★★</div>
+        <p>«Thuen Bygg og Anlegg AS utførte jobben med å anlegge 70 meter gangvei langs sjøkanten i Mandal til vår store tilfredshet. Den ble utført med stor presisjon.»</p>
+        <div class="who"><span class="av">G</span><span><b>Gerhard Skåleskog</b><span>via Google</span></span></div>
+      </div>
+      <div class="rev-card rv">
+        <div class="stars" aria-label="5 av 5">★★★★★</div>
+        <p>«Kjappe og dyktige som fikser det aller meste innen betongarbeid. I tillegg en svært positiv innstilling til arbeidet 😊»</p>
+        <div class="who"><span class="av">T</span><span><b>Thor André V. Ingebrigtsen</b><span>via Google</span></span></div>
+      </div>
+      <div class="rev-card rv rv-d1">
+        <div class="stars" aria-label="5 av 5">★★★★★</div>
+        <p>«Vi brukte Thuen bygg og anlegg til å sette opp en grunnmur på et 70&nbsp;m² drivhus. Arbeidet ble utført veldig raskt og effektivt med høy kvalitet.»</p>
+        <div class="who"><span class="av">B</span><span><b>Ben Kristian Hope</b><span>via Google</span></span></div>
+      </div>
+      <div class="rev-card rv rv-d2">
+        <div class="stars" aria-label="5 av 5">★★★★★</div>
+        <p>«Imøtekommende, effektive og yrkesstolthet.»</p>
+        <div class="who"><span class="av">H</span><span><b>Haakon Hovda</b><span>via Google</span></span></div>
+      </div>
+      <div class="rev-card rv">
+        <div class="stars" aria-label="5 av 5">★★★★★</div>
+        <p>«Laget mur rundt deler av fotballbane for Støle Velforening. Var veldig gode på pris og raskt tilstede for å utføre arbeidet.»</p>
+        <div class="who"><span class="av">S</span><span><b>Støle Velforening</b><span>via Google</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ========== BIG CTA ========== -->
 <section class="cta-band grid-bg">
   <span class="glow"></span>
@@ -627,7 +714,7 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
 <section class="sec" id="kontakt">
   <div class="wrap">
     <div class="sechead rv">
-      <div class="num">07 — KONTAKT</div>
+      <div class="num">08 — KONTAKT</div>
       <div class="ht"></div>
     </div>
     <div class="contact-grid">
@@ -688,6 +775,7 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
         <a href="#tjenester">Tjenester</a>
         <a href="#prosjekter">Prosjekter</a>
         <a href="#om">Om oss</a>
+        <a href="#anmeldelser">Anmeldelser</a>
         <a href="#omrade">Område</a>
         <a href="#kontakt">Kontakt</a>
       </div>

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thuen Bygg og Anlegg — Fra fjell til ferdig uterom | Grunn & anlegg på Haugalandet</title>
+<meta name="description" content="Thuen Bygg og Anlegg utfører grunn- og betongarbeid, støttemurer i naturstein, drenering og komplette uteanlegg på Haugalandet. Fra fjell til ferdig uterom — med egne folk og egne maskiner.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..800&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ================= TOKENS ================= */
+:root{
+  --bg:#16191C;            /* warm near-black (asphalt at night) */
+  --bg-2:#1E2328;          /* raised panel */
+  --bg-3:#262C31;
+  --cream:#E7E8EA;         /* concrete cream (light sections) */
+  --cream-2:#DEDFE2;
+  --ink:#171A1D;           /* text on cream */
+  --ink-soft:#565C62;
+  --text:#EAECEE;          /* off-white on dark */
+  --muted:#9AA0A6;         /* muted on dark */
+  --muted-2:#6E747A;
+  --line:rgba(234,236,238,.12);
+  --line-2:rgba(234,236,238,.22);
+  --line-cream:rgba(23,26,29,.14);
+  --accent:#2E60A8;        /* warm copper/amber — Thuen */
+  --accent-2:#6C9BD1;
+  --accent-deep:#244F8C;
+  --accent-tint:rgba(46,96,168,.12);
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  --ff-serif:"Fraunces",Georgia,serif;
+  --ff-sans:"Archivo",-apple-system,BlinkMacSystemFont,sans-serif;
+  --ff-mono:"Space Mono",ui-monospace,monospace;
+  --maxw:1300px;
+  --gutter:clamp(20px,5vw,72px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--ff-sans);background:var(--bg);color:var(--text);
+  line-height:1.6;font-size:17px;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  font-optical-sizing:auto;
+}
+body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;
+  background-image:var(--grain);background-size:160px;opacity:.05;mix-blend-mode:overlay}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#fff}
+
+/* ================= TYPE HELPERS ================= */
+.serif{font-family:var(--ff-serif);font-weight:400;font-optical-sizing:auto}
+.mono{font-family:var(--ff-mono)}
+.ey{font-family:var(--ff-mono);font-size:11.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.85em}
+.ey::before{content:"";width:24px;height:1px;background:var(--accent)}
+.eyn{font-family:var(--ff-mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2)}
+h2.big{font-family:var(--ff-serif);font-weight:500;font-size:clamp(34px,5.4vw,68px);line-height:1.02;letter-spacing:-.015em}
+h2.big i{font-style:italic;color:var(--accent);font-weight:500}
+.ital-acc{font-style:italic;color:var(--accent)}
+
+/* ================= WRAP / SECTION ================= */
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+.sec{padding-block:clamp(84px,11vw,150px);position:relative}
+.sec.cream{background:var(--cream);color:var(--ink)}
+.sec.cream .muted,.sec.cream .lead{color:var(--ink-soft)}
+.sechead{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:start;margin-bottom:clamp(44px,6vw,74px)}
+.sechead .num{font-family:var(--ff-mono);font-size:12px;letter-spacing:.14em;color:var(--muted-2);padding-top:10px;white-space:nowrap}
+.sec.cream .sechead .num{color:var(--ink-soft)}
+.sechead .ht{max-width:none}
+.sechead .ht .eyt{display:block;margin-bottom:20px}
+.lead{color:var(--muted);font-size:clamp(16px,1.35vw,18.5px);line-height:1.65;max-width:56ch}
+.muted{color:var(--muted)}
+
+/* faint grid on dark hero/sections */
+.grid-bg::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:clamp(60px,7vw,96px) clamp(60px,7vw,96px);
+  -webkit-mask-image:radial-gradient(120% 90% at 50% 0%,#000 40%,transparent 100%);
+          mask-image:radial-gradient(120% 90% at 50% 0%,#000 40%,transparent 100%);}
+
+/* ================= BUTTONS ================= */
+.btn{font-family:var(--ff-sans);font-weight:600;font-size:14.5px;letter-spacing:.01em;
+  padding:15px 26px;background:var(--accent);color:#fff;border:1px solid var(--accent);
+  display:inline-flex;align-items:center;gap:11px;cursor:pointer;transition:.32s var(--ease);border-radius:2px}
+.btn .ar{transition:transform .32s var(--ease)}
+.btn:hover{background:var(--accent-2);border-color:var(--accent-2)}
+.btn:hover .ar{transform:translateX(5px)}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--line-2)}
+.btn.ghost:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
+.sec.cream .btn.ghost{color:var(--ink);border-color:var(--line-cream)}
+.sec.cream .btn.ghost:hover{background:var(--ink);color:var(--cream)}
+.btn.big{padding:18px 32px;font-size:15.5px}
+
+/* ================= HEADER ================= */
+header{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s var(--ease),border-color .4s var(--ease),transform .5s var(--ease);border-bottom:1px solid transparent}
+header.solid{background:rgba(22,25,28,.82);backdrop-filter:blur(16px) saturate(1.2);border-bottom-color:var(--line)}
+header.hide{transform:translateY(-102%)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:26px;height:78px;max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+.brand{display:flex;align-items:center;gap:13px;line-height:1}
+.brand .lm{width:34px;height:34px;flex:none}
+.brand .lm svg{width:100%;height:100%;display:block}
+.brand .bt b{font-family:var(--ff-serif);font-weight:700;font-size:19px;letter-spacing:.09em;text-transform:uppercase;display:block}
+.brand .bt small{font-family:var(--ff-mono);font-size:9px;letter-spacing:.26em;color:var(--muted);display:block;margin-top:4px;text-transform:uppercase}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:14.5px;font-weight:500;color:var(--text);position:relative;padding:6px 0}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--accent);transition:width .35s var(--ease)}
+.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:22px}
+.nav-tel{font-family:var(--ff-mono);font-size:13.5px;font-weight:700;letter-spacing:.02em;display:flex;align-items:center;gap:9px}
+.nav-tel .pl{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-tint);animation:pulse 2.6s var(--ease) infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px var(--accent-tint)}50%{box-shadow:0 0 0 6px transparent}}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{width:26px;height:2px;background:var(--text);transition:.3s var(--ease)}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:var(--bg-2);transform:translateY(-100%);transition:transform .5s var(--ease);display:flex;flex-direction:column;justify-content:center;padding:var(--gutter)}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu a{font-family:var(--ff-serif);font-weight:500;font-size:clamp(30px,9vw,52px);padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline}
+.mobile-menu a .n{font-family:var(--ff-mono);font-size:13px;color:var(--accent);font-weight:400}
+.mobile-menu .mmf{margin-top:36px;font-family:var(--ff-mono);font-size:12.5px;color:var(--muted);line-height:2;letter-spacing:.03em}
+
+/* ================= HERO ================= */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:var(--bg)}
+.hero .glow{position:absolute;width:70vw;height:70vw;right:-18vw;top:-24vw;border-radius:50%;
+  background:radial-gradient(circle,rgba(46,96,168,.16),transparent 62%);pointer-events:none;filter:blur(10px)}
+.hero-inner{position:relative;z-index:3;width:100%;padding-top:96px;padding-bottom:56px}
+.hero-eyrow{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+.hero h1{font-family:var(--ff-serif);font-weight:400;font-size:clamp(52px,10.5vw,168px);line-height:.92;letter-spacing:-.03em}
+.hero h1 .r2{display:block}
+.hero h1 i{font-style:italic;color:var(--accent);font-weight:400}
+.hero-grid{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;margin-top:44px}
+.hero-sub{color:var(--muted);font-size:clamp(16px,1.5vw,20px);line-height:1.6;max-width:46ch}
+.hero-cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+.hero-coord{font-family:var(--ff-mono);font-size:12px;color:var(--muted-2);text-align:right;line-height:1.9;letter-spacing:.06em;white-space:nowrap}
+.hero-coord b{color:var(--accent);font-weight:400}
+.hero-foot{position:absolute;left:var(--gutter);right:var(--gutter);bottom:26px;display:flex;justify-content:space-between;align-items:center;z-index:3}
+.hero-est{font-family:var(--ff-mono);font-size:11px;letter-spacing:.16em;color:var(--muted-2);text-transform:uppercase}
+.scroll-ind{font-family:var(--ff-mono);font-size:11px;letter-spacing:.14em;color:var(--muted-2);text-transform:uppercase;display:flex;align-items:center;gap:11px}
+.scroll-ind .ln{width:1px;height:36px;background:var(--line-2);position:relative;overflow:hidden}
+.scroll-ind .ln::after{content:"";position:absolute;top:-36px;left:0;width:100%;height:36px;background:var(--accent);animation:drop 2.6s var(--ease) infinite}
+@keyframes drop{0%{top:-36px}60%,100%{top:36px}}
+
+/* ================= MARQUEE ================= */
+.marq{background:var(--accent);color:#fff;overflow:hidden;border-block:1px solid var(--accent-deep)}
+.marq-track{display:flex;gap:0;white-space:nowrap;width:max-content;animation:scrollx 34s linear infinite}
+.marq:hover .marq-track{animation-play-state:paused}
+.marq-track .it{font-family:var(--ff-serif);font-weight:500;font-style:italic;font-size:clamp(18px,2.2vw,26px);padding:16px 0;display:inline-flex;align-items:center}
+.marq-track .it::after{content:"✦";font-style:normal;font-size:13px;margin:0 30px;opacity:.72}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+
+/* ================= INTRO / STATS ================= */
+.intro-state{font-family:var(--ff-serif);font-weight:400;font-size:clamp(23px,3.1vw,40px);line-height:1.24;letter-spacing:-.01em;max-width:20ch}
+.intro-state em{font-style:italic;color:var(--accent)}
+.intro-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(36px,6vw,90px);align-items:center}
+.stat-list{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-cream);border:1px solid var(--line-cream)}
+.stat{background:var(--cream);padding:26px 22px;min-height:150px;display:flex;flex-direction:column;justify-content:space-between}
+.stat .sv{font-family:var(--ff-serif);font-weight:500;font-size:clamp(26px,3vw,40px);line-height:1;letter-spacing:-.01em}
+.stat .sv .u{color:var(--accent)}
+.stat .sl{font-family:var(--ff-mono);font-size:11px;letter-spacing:.05em;color:var(--ink-soft);line-height:1.5;text-transform:uppercase;margin-top:16px}
+
+/* ================= SERVICES ================= */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.svc{background:var(--bg);padding:clamp(28px,2.6vw,40px);min-height:280px;display:flex;flex-direction:column;position:relative;transition:background .4s var(--ease);cursor:default}
+.svc .sn{font-family:var(--ff-mono);font-size:12px;color:var(--accent);letter-spacing:.1em}
+.svc h3{font-family:var(--ff-serif);font-weight:500;font-size:clamp(21px,1.8vw,26px);line-height:1.06;margin-top:34px;letter-spacing:-.01em}
+.svc p{color:var(--muted);font-size:14.5px;line-height:1.6;margin-top:16px}
+.svc .go{margin-top:auto;padding-top:22px;font-family:var(--ff-mono);font-size:16px;color:var(--muted-2);transition:.35s var(--ease)}
+.svc:hover{background:var(--bg-2)}
+.svc:hover .go{color:var(--accent);transform:translateX(6px)}
+.svc::before{content:"";position:absolute;left:0;top:0;width:0;height:2px;background:var(--accent);transition:width .45s var(--ease)}
+.svc:hover::before{width:100%}
+
+/* ================= PROJECTS ================= */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.4vw,20px)}
+.pcard{position:relative;background:var(--bg-2);color:var(--text);border:1px solid var(--line);overflow:hidden;min-height:340px;display:flex;flex-direction:column;transition:.4s var(--ease)}
+.sec.cream .pcard .pmeta .pl{color:var(--muted)}
+.pcard.tall{grid-row:span 2;min-height:auto}
+.pcard .ph{position:relative;flex:1;overflow:hidden;background:var(--bg-3);min-height:200px}
+.pcard .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.pcard:hover .ph img{transform:scale(1.06)}
+.pcard .ph.noimg{display:flex;align-items:center;justify-content:center;
+  background:
+   radial-gradient(120% 80% at 50% 0%,rgba(46,96,168,.10),transparent 60%),
+   repeating-linear-gradient(135deg,rgba(234,236,238,.03) 0 2px,transparent 2px 22px),
+   var(--bg-3);}
+.pcard .ph.noimg .drw{width:78px;height:78px;opacity:.5}
+.pcard .cat{position:absolute;top:16px;left:16px;z-index:3;font-family:var(--ff-mono);font-size:10.5px;font-weight:700;letter-spacing:.1em;color:#fff;background:var(--accent);padding:5px 11px}
+.pcard .code{position:absolute;top:16px;right:16px;z-index:3;font-family:var(--ff-mono);font-size:11px;color:var(--text);opacity:.9;text-shadow:0 1px 5px rgba(0,0,0,.6)}
+.pcard .pmeta{padding:22px}
+.pcard .pmeta h3{font-family:var(--ff-serif);font-weight:500;font-size:clamp(19px,1.5vw,23px);line-height:1.1;letter-spacing:-.01em}
+.pcard .pmeta .pl{font-family:var(--ff-mono);font-size:12px;color:var(--muted);margin-top:12px;display:flex;align-items:center;gap:8px}
+.pcard .pmeta .pl::before{content:"◈";color:var(--accent);font-size:10px}
+.pcard:hover{border-color:var(--line-2)}
+/* annotation on the real feature photo */
+.pcard.feat .anno{position:absolute;z-index:4;font-family:var(--ff-mono);pointer-events:none;color:#fff}
+.pcard.feat .anno.lvl{right:16px;bottom:74px;text-align:right;font-size:11px;letter-spacing:.05em;text-shadow:0 1px 6px rgba(0,0,0,.7)}
+.pcard.feat .anno.lvl .ln{width:90px;height:1px;background:var(--accent-2);margin:5px 0 0 auto}
+
+/* ================= WHY ================= */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line-cream)}
+.why{padding:38px 26px 30px;border-right:1px solid var(--line-cream);min-height:250px;display:flex;flex-direction:column}
+.why:last-child{border-right:none}
+.why .wn{font-family:var(--ff-mono);font-size:12px;color:var(--accent);letter-spacing:.1em}
+.why h3{font-family:var(--ff-serif);font-weight:500;font-size:22px;margin-top:30px;line-height:1.08;letter-spacing:-.01em}
+.why p{color:var(--ink-soft);font-size:14.5px;line-height:1.6;margin-top:14px}
+
+/* ================= ABOUT ================= */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:center}
+.about-body h2{font-family:var(--ff-serif);font-weight:500;font-size:clamp(28px,3.6vw,50px);line-height:1.05;letter-spacing:-.015em}
+.about-body h2 i{font-style:italic;color:var(--accent)}
+.about-body p{color:var(--muted);font-size:16px;line-height:1.72;margin-top:26px;max-width:52ch}
+.about-facts{border-top:1px solid var(--line)}
+.afr{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.afr .k{font-family:var(--ff-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.afr .v{font-size:16px;font-weight:500}
+.afr .v small{display:block;font-family:var(--ff-mono);font-size:11.5px;color:var(--muted);margin-top:5px;letter-spacing:.02em}
+
+/* ================= AREA ================= */
+.area-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(36px,5vw,80px);align-items:start}
+.area-chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{font-family:var(--ff-sans);font-size:14.5px;font-weight:500;padding:11px 18px;border:1px solid var(--line-cream);border-radius:100px;transition:.3s var(--ease)}
+.chip:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.chip.acc{background:var(--accent);color:#fff;border-color:var(--accent)}
+.area-marq{margin-top:40px;overflow:hidden;border-block:1px solid var(--line-cream)}
+.area-marq .marq-track .it{font-family:var(--ff-serif);font-style:italic;color:var(--ink);font-size:clamp(18px,2vw,26px);padding:14px 0}
+.area-marq .marq-track .it::after{content:"/";color:var(--accent);opacity:.7;margin:0 26px}
+
+/* ================= BIG CTA ================= */
+.cta-band{position:relative;background:var(--bg);overflow:hidden;text-align:center;padding-block:clamp(80px,11vw,150px)}
+.cta-band .glow{position:absolute;width:80vw;height:60vw;left:10vw;bottom:-30vw;border-radius:50%;background:radial-gradient(circle,rgba(46,96,168,.14),transparent 60%);pointer-events:none}
+.cta-band h2{font-family:var(--ff-serif);font-weight:400;font-size:clamp(38px,7vw,104px);line-height:.98;letter-spacing:-.025em;position:relative;z-index:2}
+.cta-band h2 i{font-style:italic;color:var(--accent)}
+.cta-band .cta-row{display:flex;gap:16px;justify-content:center;margin-top:44px;flex-wrap:wrap;position:relative;z-index:2}
+
+/* ================= CONTACT ================= */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(40px,5vw,80px);align-items:start}
+.contact-info h2{font-family:var(--ff-serif);font-weight:500;font-size:clamp(30px,4vw,54px);line-height:1;letter-spacing:-.015em}
+.contact-info h2 i{font-style:italic;color:var(--accent)}
+.ci-list{margin-top:38px;border-top:1px solid var(--line)}
+.cil{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:19px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.cil .k{font-family:var(--ff-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cil .v{font-size:15.5px;font-weight:500}
+.cil a.v:hover{color:var(--accent)}
+.form{background:var(--bg-2);border:1px solid var(--line);padding:clamp(26px,3vw,42px)}
+.form .fh{display:flex;justify-content:space-between;font-family:var(--ff-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:30px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.field{display:flex;flex-direction:column;gap:9px}
+.field.full{grid-column:1/-1}
+.field label{font-family:var(--ff-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select,.field textarea{background:transparent;border:none;border-bottom:1px solid var(--line-2);color:var(--text);font-family:var(--ff-sans);font-size:15.5px;padding:11px 2px;transition:border-color .3s;width:100%}
+.field select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232E60A8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 2px center}
+.field select option{background:var(--bg-2);color:var(--text)}
+.field textarea{resize:vertical;min-height:92px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-bottom-color:var(--accent)}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted-2)}
+.form .btn{width:100%;justify-content:center;margin-top:30px}
+.form-note{font-family:var(--ff-mono);font-size:10.5px;color:var(--muted-2);text-align:center;margin-top:16px;line-height:1.6}
+.form-success{display:none;text-align:center;padding:26px 6px}
+.form-success.show{display:block;animation:fade .5s var(--ease)}
+.form-success .ck{width:58px;height:58px;border:1.5px solid var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.form-success h4{font-family:var(--ff-serif);font-weight:500;font-size:24px}
+.form-success p{color:var(--muted);font-size:14.5px;margin-top:12px;line-height:1.6}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ================= FOOTER ================= */
+footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
+.foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:44px;padding-bottom:60px;border-bottom:1px solid var(--line)}
+.foot-brand .fbn{font-family:var(--ff-serif);font-weight:500;font-size:clamp(34px,5vw,58px);line-height:.95;letter-spacing:-.02em}
+.foot-brand .fbn i{font-style:italic;color:var(--accent)}
+.foot-brand p{font-family:var(--ff-mono);font-size:12px;color:var(--muted);margin-top:20px;max-width:34ch;line-height:1.8;letter-spacing:.02em}
+.foot-col h5{font-family:var(--ff-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.foot-col a,.foot-col p{display:block;font-size:14.5px;color:var(--text);padding:7px 0;transition:color .3s}
+.foot-col a:hover{color:var(--accent)}
+.foot-bottom{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:26px 0 40px;font-family:var(--ff-mono);font-size:11px;color:var(--muted-2);letter-spacing:.04em}
+
+/* ================= REVEAL ================= */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}.rv-d4{transition-delay:.32s}.rv-d5{transition-delay:.4s}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:1024px){
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .proj-grid{grid-template-columns:repeat(2,1fr)}
+  .pcard.tall{grid-row:auto}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .why:nth-child(2){border-right:none}
+  .why{border-bottom:1px solid var(--line-cream)}
+  .intro-grid,.about-grid,.area-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
+  .hero-grid{grid-template-columns:1fr;align-items:start;gap:26px}
+  .hero-coord{text-align:left}
+}
+@media(max-width:680px){
+  body{font-size:16px}
+  .nav-links,.nav-tel{display:none}
+  .nav-right .btn{display:none}
+  .burger{display:flex}
+  .sechead{grid-template-columns:1fr;gap:14px}
+  .sechead .num{padding-top:0}
+  .svc-grid{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .stat-list{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .why{border-right:none}
+  .fgrid{grid-template-columns:1fr}
+  .afr,.cil{grid-template-columns:90px 1fr;gap:12px}
+  .foot-top{grid-template-columns:1fr;gap:34px}
+  .hero{flex-direction:column;justify-content:center}
+  .hero-inner{padding-top:118px}
+  .hero-foot{position:static;margin-top:36px;padding-inline:0;flex-wrap:wrap;gap:16px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+  .marq-track{animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header id="hdr">
+  <nav class="nav">
+    <a href="#top" class="brand" aria-label="Thuen Bygg og Anlegg">
+      <span class="lm">
+        <svg viewBox="0 0 36 34" fill="none" aria-hidden="true">
+          <path d="M3 8 H17 L24 15" stroke="#8FB4D6" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 14 H17 L24 21" stroke="#3E70B4" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 20 H17 L24 27" stroke="#264F8C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="bt"><b>Thuen</b><small>Bygg&nbsp;&amp;&nbsp;Anlegg</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#tjenester">Tjenester</a>
+      <a href="#prosjekter">Prosjekter</a>
+      <a href="#om">Om oss</a>
+      <a href="#omrade">Område</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <div class="nav-right">
+      <a href="tel:+4741195195" class="nav-tel"><span class="pl"></span>41 195 195</a>
+      <a href="#kontakt" class="btn">Be om befaring <span class="ar">→</span></a>
+      <button class="burger" id="burger" aria-label="Åpne meny"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#tjenester">Tjenester <span class="n">01</span></a>
+  <a href="#prosjekter">Prosjekter <span class="n">02</span></a>
+  <a href="#om">Om oss <span class="n">03</span></a>
+  <a href="#omrade">Område <span class="n">04</span></a>
+  <a href="#kontakt">Kontakt <span class="n">05</span></a>
+  <div class="mmf">THUEN BYGG OG ANLEGG<br>Haugalandet og omegn<br>Tlf. 41 195 195</div>
+</div>
+
+<!-- ========== HERO ========== -->
+<section class="hero grid-bg" id="top">
+  <span class="glow"></span>
+  <div class="wrap hero-inner">
+    <div class="hero-eyrow">
+      <span class="ey">Betongentreprenør — Haugalandet</span>
+    </div>
+    <h1>Fra fjell til<span class="r2"><i>ferdig uterom.</i></span></h1>
+    <div class="hero-grid">
+      <div>
+        <p class="hero-sub">Grunnarbeid, betong, murer og uteanlegg — utført av egne folk med egne maskiner. Vi tar hånd om hele reisen, fra første spadetak til siste kantstein.</p>
+        <div class="hero-cta">
+          <a href="#prosjekter" class="btn">Se prosjekter <span class="ar">→</span></a>
+          <a href="#kontakt" class="btn ghost">Be om befaring</a>
+        </div>
+      </div>
+      <div class="hero-coord">
+        59.41°N<br>05.27°Ø<br><b>HAUGALANDET</b>
+      </div>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <span class="hero-est">Betongentreprenør — Haugalandet</span>
+    <span class="scroll-ind"><span class="ln"></span>Rull ned</span>
+  </div>
+</section>
+
+<!-- ========== MARQUEE ========== -->
+<div class="marq" aria-hidden="true">
+  <div class="marq-track">
+    <span class="it">Grunnarbeid</span><span class="it">Betong &amp; støp</span><span class="it">Støttemurer</span><span class="it">Naturstein</span><span class="it">Drenering</span><span class="it">Belegg &amp; trapp</span><span class="it">Uteanlegg</span><span class="it">Masseutskifting</span>
+    <span class="it">Grunnarbeid</span><span class="it">Betong &amp; støp</span><span class="it">Støttemurer</span><span class="it">Naturstein</span><span class="it">Drenering</span><span class="it">Belegg &amp; trapp</span><span class="it">Uteanlegg</span><span class="it">Masseutskifting</span>
+  </div>
+</div>
+
+<!-- ========== INTRO ========== -->
+<section class="sec cream" id="intro">
+  <div class="wrap">
+    <div class="sechead">
+      <div class="num">01 — INTRODUKSJON</div>
+      <div class="ht"></div>
+    </div>
+    <div class="intro-grid">
+      <p class="intro-state rv">Thuen Bygg og Anlegg er en lokal betongentreprenør med grunnarbeidet i ryggraden. Vi bygger nedenfra og opp — <em>og gjør det som skal bære, riktig.</em></p>
+      <div class="stat-list rv rv-d1">
+        <div class="stat"><div class="sv">A<span class="u">–</span>Å</div><div class="sl">Totalansvar fra graving til ferdig uterom</div></div>
+        <div class="stat"><div class="sv">Egne<span class="u">.</span></div><div class="sl">Maskiner og folk — kontroll på hvert ledd</div></div>
+        <div class="stat"><div class="sv">Fast<span class="u">.</span></div><div class="sl">Tydelig pris før vi setter spaden i jorda</div></div>
+        <div class="stat"><div class="sv">Lokal<span class="u">.</span></div><div class="sl">Forankret på Haugalandet — kjent grunn og klima</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SERVICES ========== -->
+<section class="sec" id="tjenester">
+  <div class="wrap">
+    <div class="sechead rv">
+      <div class="num">02 — TJENESTER</div>
+      <div class="ht">
+        <span class="ey eyt">Tjenester</span>
+        <h2 class="big">Alt fra grunn til<br>ferdig flate, <i>hos én.</i></h2>
+      </div>
+    </div>
+    <div class="svc-grid">
+      <div class="svc rv">
+        <div class="sn">01</div>
+        <h3>Grunn- &amp; betongarbeid</h3>
+        <p>Utgraving, masseutskifting og komprimering. Plasstøpte fundamenter, plater på mark og grunnmurer — armert og forskalet etter tegning.</p>
+        <div class="go">→</div>
+      </div>
+      <div class="svc rv rv-d1">
+        <div class="sn">02</div>
+        <h3>Støttemurer &amp; naturstein</h3>
+        <p>Murer i plasstøpt betong og naturstein, forblending, kantstein og steintrapper. Solide konstruksjoner som tar opp terreng og tid.</p>
+        <div class="go">→</div>
+      </div>
+      <div class="svc rv rv-d2">
+        <div class="sn">03</div>
+        <h3>Drenering &amp; VA</h3>
+        <p>Drenering rundt bygg, håndtering av overvann, stikkledninger og kummer. Vi holder vannet unna der det gjør skade.</p>
+        <div class="go">→</div>
+      </div>
+      <div class="svc rv">
+        <div class="sn">04</div>
+        <h3>Uteanlegg &amp; belegg</h3>
+        <p>Belegningsstein, skifer og heller, trapper, plen og beplantning. Vi gjør ferdig uterommet — helt ut til siste kantstein.</p>
+        <div class="go">→</div>
+      </div>
+      <div class="svc rv rv-d1">
+        <div class="sn">05</div>
+        <h3>Masseutskifting &amp; planering</h3>
+        <p>Utskifting av dårlige masser, oppbygging med riktige lag og planering av tomta. Et stabilt grunnlag for alt som kommer etterpå.</p>
+        <div class="go">→</div>
+      </div>
+      <div class="svc rv rv-d2">
+        <div class="sn">06</div>
+        <h3>Tomt &amp; underentreprise</h3>
+        <p>Tomteopparbeidelse, adkomst og parkering — og en pålitelig anleggspartner for byggefirma som trenger kapasitet på grunnen.</p>
+        <div class="go">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROJECTS ========== -->
+<section class="sec cream" id="prosjekter">
+  <div class="wrap">
+    <div class="sechead rv">
+      <div class="num">03 — UTVALGTE PROSJEKTER</div>
+      <div class="ht">
+        <span class="ey eyt">Prosjekter</span>
+        <h2 class="big">Arbeid vi er <i>stolte av.</i></h2>
+        <p class="lead" style="margin-top:22px">Et utvalg fra anlegget — murer, betong, drenering og ferdige uterom utført på Haugalandet.</p>
+      </div>
+    </div>
+    <div class="proj-grid">
+      <div class="pcard feat tall rv">
+        <div class="ph">
+          <img src="images/proj-mur-naturstein.jpg" alt="Plasstøpt støttemur med natursteinsfront under bygging">
+          <span class="cat">STØTTEMUR</span>
+          <span class="code">PR-01</span>
+          <div class="anno lvl">+00.00 ferdig nivå<div class="ln"></div></div>
+        </div>
+        <div class="pmeta">
+          <h3>Plasstøpt mur med natursteinsfront</h3>
+          <div class="pl">Haugalandet · plasstøp &amp; naturstein</div>
+        </div>
+      </div>
+      <div class="pcard rv rv-d1">
+        <div class="ph noimg">
+          <svg class="drw" viewBox="0 0 60 60" fill="none"><rect x="6" y="30" width="48" height="24" stroke="#2E60A8" stroke-width="1.5"/><path d="M6 30l24-16 24 16" stroke="#EAECEE" stroke-width="1.5" opacity=".6"/><path d="M20 54V40h20v14" stroke="#EAECEE" stroke-width="1.5" opacity=".6"/></svg>
+        </div>
+        <div class="pmeta">
+          <span class="cat" style="position:static;display:inline-block;margin-bottom:14px">BETONG</span>
+          <h3>Plasstøpt garasje &amp; grunnmur</h3>
+          <div class="pl">Haugalandet</div>
+        </div>
+      </div>
+      <div class="pcard rv rv-d2">
+        <div class="ph noimg">
+          <svg class="drw" viewBox="0 0 60 60" fill="none"><path d="M6 46h48M6 38h48M6 30h48" stroke="#2E60A8" stroke-width="1.5"/><path d="M12 54V22M30 54V16M48 54V26" stroke="#EAECEE" stroke-width="1.5" opacity=".6"/></svg>
+        </div>
+        <div class="pmeta">
+          <span class="cat" style="position:static;display:inline-block;margin-bottom:14px">UTEROM</span>
+          <h3>Uterom med belegg &amp; trapp</h3>
+          <div class="pl">Haugalandet</div>
+        </div>
+      </div>
+      <div class="pcard rv rv-d1">
+        <div class="ph noimg">
+          <svg class="drw" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="16" stroke="#2E60A8" stroke-width="1.5"/><path d="M30 14v32M14 30h32" stroke="#EAECEE" stroke-width="1.5" opacity=".6"/></svg>
+        </div>
+        <div class="pmeta">
+          <span class="cat" style="position:static;display:inline-block;margin-bottom:14px">DRENERING</span>
+          <h3>Drenering &amp; masseutskifting</h3>
+          <div class="pl">Haugalandet</div>
+        </div>
+      </div>
+      <div class="pcard rv rv-d2">
+        <div class="ph noimg">
+          <svg class="drw" viewBox="0 0 60 60" fill="none"><path d="M8 52c6-10 10-14 14-14s6 6 12 6 8-8 18-10" stroke="#2E60A8" stroke-width="1.5"/><path d="M8 52h44" stroke="#EAECEE" stroke-width="1.5" opacity=".6"/></svg>
+        </div>
+        <div class="pmeta">
+          <span class="cat" style="position:static;display:inline-block;margin-bottom:14px">NATURSTEIN</span>
+          <h3>Natursteinsmur &amp; ferdigplen</h3>
+          <div class="pl">Haugalandet</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WHY ========== -->
+<section class="sec cream" id="hvorfor">
+  <div class="wrap">
+    <div class="sechead rv">
+      <div class="num">04 — HVORFOR VELGE OSS</div>
+      <div class="ht">
+        <span class="ey eyt">Fordeler</span>
+        <h2 class="big">Trygghet i <i>hvert ledd.</i></h2>
+      </div>
+    </div>
+    <div class="why-grid">
+      <div class="why rv"><div class="wn">01</div><h3>Lokalt forankret</h3><p>Vi bor og bygger på Haugalandet. Kort vei, kjent grunn og folk du treffer igjen.</p></div>
+      <div class="why rv rv-d1"><div class="wn">02</div><h3>Egne maskiner &amp; folk</h3><p>Vi eier utstyret og kjenner mannskapet. Det gir forutsigbar framdrift og kontroll på kvaliteten.</p></div>
+      <div class="why rv rv-d2"><div class="wn">03</div><h3>Én partner — hele veien</h3><p>Fra graving til siste kantstein. Du forholder deg til oss; vi holder trådene samlet.</p></div>
+      <div class="why rv rv-d3"><div class="wn">04</div><h3>Bygget for å holde</h3><p>Riktig drenering, riktig masse, riktig armering. Vi tar snarveiene bort, ikke fram.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section class="sec" id="om">
+  <div class="wrap">
+    <div class="sechead rv">
+      <div class="num">05 — OM BEDRIFTEN</div>
+      <div class="ht"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-body rv">
+        <h2>Din partner på <i>grunnen.</i></h2>
+        <p>Thuen Bygg og Anlegg holder til på Haugalandet og tar oppdrag i hele regionen. Vi utfører alt fra grunn- og betongarbeid til murer, drenering og komplette uteanlegg.</p>
+        <p>For oss handler et godt anlegg like mye om det som ligger under bakken som om overflaten du ser. Vi gjør grunnarbeidet skikkelig, holder byggeplassen ryddig, og leverer et resultat som varer — enten du er boligeier eller et byggefirma som trenger en solid medspiller.</p>
+      </div>
+      <div class="about-facts rv rv-d1">
+        <div class="afr"><div class="k">Base</div><div class="v">Haugalandet</div></div>
+        <div class="afr"><div class="k">Fag</div><div class="v">Bygg &amp; anlegg<small>Grunn · betong · mur · uteanlegg</small></div></div>
+        <div class="afr"><div class="k">Område</div><div class="v">Haugalandet &amp; Rogaland</div></div>
+        <div class="afr"><div class="k">Oppdrag</div><div class="v">Privat &amp; næring<small>Totalentreprise og underentreprise</small></div></div>
+        <div class="afr"><div class="k">Pris</div><div class="v">Fast tilbud — ingen overraskelser</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== AREA ========== -->
+<section class="sec cream" id="omrade">
+  <div class="wrap">
+    <div class="sechead rv">
+      <div class="num">06 — OMRÅDE</div>
+      <div class="ht">
+        <span class="ey eyt">Område</span>
+        <h2 class="big">Der vi er <i>på plass.</i></h2>
+      </div>
+    </div>
+    <div class="area-grid">
+      <p class="lead rv">Med base på Haugalandet rykker vi ut i hele regionen. Usikker på om vi tar oppdrag hos deg? Ta en telefon — vi reiser gjerne litt for en god jobb.</p>
+      <div class="area-chips rv rv-d1">
+        <span class="chip acc">Haugesund</span>
+        <span class="chip">Karmøy</span>
+        <span class="chip">Kopervik</span>
+        <span class="chip">Åkrehamn</span>
+        <span class="chip">Norheim</span>
+        <span class="chip">Tysvær</span>
+        <span class="chip">Aksdal</span>
+        <span class="chip">Sveio</span>
+        <span class="chip">Vindafjord</span>
+        <span class="chip">Bokn</span>
+        <span class="chip">Ølen</span>
+        <span class="chip">Resten av Rogaland</span>
+      </div>
+    </div>
+    <div class="area-marq" aria-hidden="true">
+      <div class="marq-track">
+        <span class="it">Haugalandet</span><span class="it">Haugesund</span><span class="it">Karmøy</span><span class="it">Tysvær</span><span class="it">Sveio</span><span class="it">Rogaland</span>
+        <span class="it">Haugalandet</span><span class="it">Haugesund</span><span class="it">Karmøy</span><span class="it">Tysvær</span><span class="it">Sveio</span><span class="it">Rogaland</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BIG CTA ========== -->
+<section class="cta-band grid-bg">
+  <span class="glow"></span>
+  <div class="wrap">
+    <span class="ey" style="justify-content:center;margin-bottom:26px">Klar for å starte?</span>
+    <h2>La oss bygge<br>noe som <i>holder.</i></h2>
+    <div class="cta-row">
+      <a href="#kontakt" class="btn big">Be om befaring <span class="ar">→</span></a>
+      <a href="tel:+4741195195" class="btn ghost big">Ring 41 195 195</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section class="sec" id="kontakt">
+  <div class="wrap">
+    <div class="sechead rv">
+      <div class="num">07 — KONTAKT</div>
+      <div class="ht"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info rv">
+        <h2>Ta <i>kontakt.</i></h2>
+        <p class="lead" style="margin-top:22px">Fortell oss kort om prosjektet, så tar vi en uforpliktende prat og avtaler befaring. Vi svarer raskt.</p>
+        <div class="ci-list">
+          <div class="cil"><div class="k">Telefon</div><a href="tel:+4741195195" class="v">41 195 195</a></div>
+          <div class="cil"><div class="k">E-post</div><a href="mailto:thuenba@gmail.com" class="v">thuenba@gmail.com</a></div>
+          <div class="cil"><div class="k">Område</div><div class="v">Haugalandet &amp; Rogaland</div></div>
+          <div class="cil"><div class="k">Åpningstid</div><div class="v">Man–fre 07–16 · ellers etter avtale</div></div>
+          <div class="cil"><div class="k">Org.nr</div><div class="v">000 000 000</div></div>
+        </div>
+      </div>
+      <div class="rv rv-d1">
+        <form class="form" id="beforingForm" novalidate>
+          <div class="fh"><span>Forespørsel / befaring</span><span>REF-000</span></div>
+          <div class="fgrid">
+            <div class="field"><label for="navn">Navn</label><input id="navn" name="navn" type="text" placeholder="Ola Nordmann" required></div>
+            <div class="field"><label for="tel">Telefon</label><input id="tel" name="tel" type="tel" placeholder="41 195 195" required></div>
+            <div class="field full"><label for="epost">E-post</label><input id="epost" name="epost" type="email" placeholder="din@epost.no"></div>
+            <div class="field full"><label for="type">Hva gjelder det?</label>
+              <select id="type" name="type">
+                <option>Grunn- &amp; betongarbeid</option>
+                <option>Støttemur / naturstein</option>
+                <option>Drenering / VA</option>
+                <option>Uteanlegg / belegg</option>
+                <option>Masseutskifting / planering</option>
+                <option>Tomt / underentreprise</option>
+                <option>Annet / vet ikke helt</option>
+              </select>
+            </div>
+            <div class="field full"><label for="melding">Melding</label><textarea id="melding" name="melding" placeholder="Beskriv kort hva du ønsker gjort, og gjerne adresse/tomt …"></textarea></div>
+          </div>
+          <button type="submit" class="btn">Send forespørsel <span class="ar">→</span></button>
+          <p class="form-note">Ved å sende godtar du at vi tar kontakt om henvendelsen din.</p>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="ck"><svg viewBox="0 0 26 26" width="26" height="26" fill="none"><path d="M4 13.5l6 6 12-14" stroke="#2E60A8" stroke-width="2"/></svg></div>
+          <h4>Takk — vi tar kontakt!</h4>
+          <p id="successMsg">Vi har mottatt forespørselen din og ringer deg for å avtale befaring.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="fbn">Thuen <i>Bygg&nbsp;&amp;&nbsp;Anlegg</i></div>
+        <p>Grunn, betong, murer og uteanlegg på Haugalandet. Fra fjell til ferdig uterom — bygget for å holde.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Meny</h5>
+        <a href="#tjenester">Tjenester</a>
+        <a href="#prosjekter">Prosjekter</a>
+        <a href="#om">Om oss</a>
+        <a href="#omrade">Område</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+      <div class="foot-col">
+        <h5>Kontakt</h5>
+        <a href="tel:+4741195195">41 195 195</a>
+        <a href="mailto:thuenba@gmail.com">thuenba@gmail.com</a>
+        <p>Haugalandet &amp; Rogaland</p>
+        <p>Org.nr 000 000 000</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Thuen Bygg og Anlegg</span>
+      <span>Fra fjell til ferdig uterom</span>
+      <span>Nettside — designforslag</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hdr=document.getElementById('hdr'),lastY=0;
+  function onScroll(){var y=window.scrollY;hdr.classList.toggle('solid',y>40);
+    if(y>460&&y>lastY){hdr.classList.add('hide');}else{hdr.classList.remove('hide');}lastY=y;}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var burger=document.getElementById('burger'),mm=document.getElementById('mobileMenu');
+  function toggleMenu(){var o=mm.classList.toggle('open');burger.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';}
+  burger.addEventListener('click',toggleMenu);
+  mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){if(mm.classList.contains('open'))toggleMenu();});});
+
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){if(rm){el.classList.add('in');}else{io.observe(el);}});
+
+  var form=document.getElementById('beforingForm');
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var navn=(document.getElementById('navn').value||'').trim();
+    var tel=(document.getElementById('tel').value||'').trim();
+    if(!navn||!tel){[['navn',navn],['tel',tel]].forEach(function(p){document.getElementById(p[0]).style.borderBottomColor=p[1]?'':'#2E60A8';});return;}
+    document.getElementById('successMsg').textContent='Takk, '+navn.split(' ')[0]+' — vi har mottatt forespørselen din og ringer deg på '+tel+' for å avtale befaring.';
+    form.style.display='none';document.getElementById('formSuccess').classList.add('show');
+  });
+  document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

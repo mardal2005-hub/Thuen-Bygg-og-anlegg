@@ -1,0 +1,12 @@
+# Tooling / build artifacts — not part of the site
+node_modules/
+shots/
+server.js
+shots.js
+process.js
+package.json
+package-lock.json
+thuen-artifact.html
+raw_*.png
+*.log
+.DS_Store

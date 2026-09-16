@@ -1,12 +1,12 @@
-# Tooling / build artifacts — not part of the site
+# Tooling / build artifacts — not part of the site (site JS is inline in index.html)
 node_modules/
 shots/
-server.js
-shots.js
-process.js
+*.js
+*.b64
 package.json
 package-lock.json
 thuen-artifact.html
 raw_*.png
+_raw*
 *.log
 .DS_Store

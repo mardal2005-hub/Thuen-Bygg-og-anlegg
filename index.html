@@ -172,31 +172,29 @@ header.hide{transform:translateY(-102%)}
 .svc::before{content:"";position:absolute;left:0;top:0;width:0;height:2px;background:var(--accent);transition:width .45s var(--ease)}
 .svc:hover::before{width:100%}
 
-/* ================= PROJECTS ================= */
-.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.4vw,20px)}
-.pcard{position:relative;background:var(--bg-2);color:var(--text);border:1px solid var(--line);overflow:hidden;min-height:340px;display:flex;flex-direction:column;transition:.4s var(--ease)}
-.sec.cream .pcard .pmeta .pl{color:var(--muted)}
-.pcard.tall{grid-row:span 2;min-height:auto}
-.pcard .ph{position:relative;flex:1;overflow:hidden;background:var(--bg-3);min-height:200px}
-.pcard .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
-.pcard:hover .ph img{transform:scale(1.06)}
-.pcard .ph.noimg{display:flex;align-items:center;justify-content:center;
-  background:
-   radial-gradient(120% 80% at 50% 0%,rgba(46,96,168,.10),transparent 60%),
-   repeating-linear-gradient(135deg,rgba(234,236,238,.03) 0 2px,transparent 2px 22px),
-   var(--bg-3);}
-.pcard .ph.noimg .drw{width:78px;height:78px;opacity:.5}
-.pcard .cat{position:absolute;top:16px;left:16px;z-index:3;font-family:var(--ff-mono);font-size:10.5px;font-weight:700;letter-spacing:.1em;color:#fff;background:var(--accent);padding:5px 11px}
-.pcard .code{position:absolute;top:16px;right:16px;z-index:3;font-family:var(--ff-mono);font-size:11px;color:var(--text);opacity:.9;text-shadow:0 1px 5px rgba(0,0,0,.6)}
-.pcard .pmeta{padding:22px}
-.pcard .pmeta h3{font-family:var(--ff-serif);font-weight:500;font-size:clamp(19px,1.5vw,23px);line-height:1.1;letter-spacing:-.01em}
-.pcard .pmeta .pl{font-family:var(--ff-mono);font-size:12px;color:var(--muted);margin-top:12px;display:flex;align-items:center;gap:8px}
-.pcard .pmeta .pl::before{content:"◈";color:var(--accent);font-size:10px}
-.pcard:hover{border-color:var(--line-2)}
-/* annotation on the real feature photo */
-.pcard.feat .anno{position:absolute;z-index:4;font-family:var(--ff-mono);pointer-events:none;color:#fff}
-.pcard.feat .anno.lvl{right:16px;bottom:74px;text-align:right;font-size:11px;letter-spacing:.05em;text-shadow:0 1px 6px rgba(0,0,0,.7)}
-.pcard.feat .anno.lvl .ln{width:90px;height:1px;background:var(--accent-2);margin:5px 0 0 auto}
+/* ================= PROJECTS (photo gallery) ================= */
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:clamp(12px,1.3vw,18px)}
+.pcard{position:relative;overflow:hidden;min-height:300px;border:1px solid var(--line-cream);display:block;background:var(--bg-2)}
+.pcard.tall{grid-row:span 2}
+.pcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.pcard:hover img{transform:scale(1.06)}
+.pcard .grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(11,13,16,.92),rgba(11,13,16,.14) 54%,rgba(11,13,16,.04));transition:opacity .4s var(--ease)}
+.pcard:hover .grad{background:linear-gradient(to top,rgba(11,13,16,.94),rgba(11,13,16,.28) 60%,rgba(11,13,16,.08))}
+.pcard .cat{position:absolute;top:15px;left:15px;z-index:3;font-family:var(--ff-mono);font-size:10px;font-weight:700;letter-spacing:.1em;color:#fff;background:var(--accent);padding:5px 10px}
+.pcard .code{position:absolute;top:17px;right:15px;z-index:3;font-family:var(--ff-mono);font-size:11px;color:rgba(255,255,255,.85);text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.pcard .cap{position:absolute;left:18px;right:18px;bottom:16px;z-index:3;transition:transform .4s var(--ease)}
+.pcard:hover .cap{transform:translateY(-2px)}
+.pcard .cap h3{font-family:var(--ff-serif);font-weight:500;font-size:clamp(18px,1.5vw,24px);line-height:1.08;color:#fff;letter-spacing:-.01em}
+.pcard .cap .loc{font-family:var(--ff-mono);font-size:11.5px;color:rgba(255,255,255,.72);margin-top:10px;display:flex;align-items:center;gap:7px}
+.pcard .cap .loc::before{content:"◈";color:var(--accent-2);font-size:9px}
+/* team banner in About */
+.team-banner{position:relative;overflow:hidden;border:1px solid var(--line);margin-bottom:clamp(40px,5vw,64px);aspect-ratio:16/6.5}
+.team-banner img{width:100%;height:100%;object-fit:cover;object-position:center 42%;transition:transform 1.4s var(--ease)}
+.team-banner:hover img{transform:scale(1.04)}
+.team-banner .tb-cap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(22px,3vw,40px);
+  background:linear-gradient(to top,rgba(16,18,21,.9),rgba(16,18,21,.15) 55%,transparent)}
+.team-banner .tb-cap b{font-family:var(--ff-serif);font-weight:500;font-size:clamp(20px,2.4vw,32px);color:#fff;letter-spacing:-.01em;max-width:22ch;line-height:1.1}
+.team-banner .tb-cap span{font-family:var(--ff-mono);font-size:11px;letter-spacing:.06em;color:rgba(255,255,255,.75);margin-top:12px}
 
 /* ================= WHY ================= */
 .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line-cream)}
@@ -367,7 +365,7 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
     <h1>Fra fjell til<span class="r2"><i>ferdig uterom.</i></span></h1>
     <div class="hero-grid">
       <div>
-        <p class="hero-sub">Grunnarbeid, betong, murer og uteanlegg — utført av egne folk med egne maskiner. Vi tar hånd om hele reisen, fra første spadetak til siste kantstein.</p>
+        <p class="hero-sub">Betongentreprenør på Haugalandet. Vi støper støttemurer, garasjer og uteanlegg — fra bord-forskaling til ferdig, vedlikeholdsfritt resultat, med egne folk og egne maskiner.</p>
         <div class="hero-cta">
           <a href="#prosjekter" class="btn">Se prosjekter <span class="ar">→</span></a>
           <a href="#kontakt" class="btn ghost">Be om befaring</a>
@@ -424,14 +422,14 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
     <div class="svc-grid">
       <div class="svc rv">
         <div class="sn">01</div>
-        <h3>Grunn- &amp; betongarbeid</h3>
-        <p>Utgraving, masseutskifting og komprimering. Plasstøpte fundamenter, plater på mark og grunnmurer — armert og forskalet etter tegning.</p>
+        <h3>Betong &amp; bord-forskaling</h3>
+        <p>Plasstøpte fundamenter, plater, grunnmurer og vedlikeholdsfrie garasjer — armert og forskalet etter tegning. Bord-forskaling er spesialiteten vår: treverket gir betongen et varig, levende preg.</p>
         <div class="go">→</div>
       </div>
       <div class="svc rv rv-d1">
         <div class="sn">02</div>
         <h3>Støttemurer &amp; naturstein</h3>
-        <p>Murer i plasstøpt betong og naturstein, forblending, kantstein og steintrapper. Solide konstruksjoner som tar opp terreng og tid.</p>
+        <p>Murer i plasstøpt betong og naturstein — rette eller buede spesialstøp, forblending, kantstein og steintrapper. Solide konstruksjoner som tar opp terreng og tid.</p>
         <div class="go">→</div>
       </div>
       <div class="svc rv rv-d2">
@@ -474,57 +472,53 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
       </div>
     </div>
     <div class="proj-grid">
-      <div class="pcard feat tall rv">
-        <div class="ph">
-          <img src="images/proj-mur-naturstein.jpg" alt="Plasstøpt støttemur med natursteinsfront under bygging">
-          <span class="cat">STØTTEMUR</span>
-          <span class="code">PR-01</span>
-          <div class="anno lvl">+00.00 ferdig nivå<div class="ln"></div></div>
-        </div>
-        <div class="pmeta">
-          <h3>Plasstøpt mur med natursteinsfront</h3>
-          <div class="pl">Haugalandet · plasstøp &amp; naturstein</div>
-        </div>
+      <div class="pcard tall rv">
+        <img src="images/proj-mur-naturstein.jpg" alt="Plasstøpt støttemur med natursteinsfront under bygging">
+        <div class="grad"></div>
+        <span class="cat">STØTTEMUR</span><span class="code">PR-01</span>
+        <div class="cap"><h3>Plasstøpt støttemur med natursteinsfront</h3><div class="loc">Haugalandet · plasstøp &amp; naturstein</div></div>
       </div>
       <div class="pcard rv rv-d1">
-        <div class="ph noimg">
-          <svg class="drw" viewBox="0 0 60 60" fill="none"><rect x="6" y="30" width="48" height="24" stroke="#2E60A8" stroke-width="1.5"/><path d="M6 30l24-16 24 16" stroke="#EAECEE" stroke-width="1.5" opacity=".6"/><path d="M20 54V40h20v14" stroke="#EAECEE" stroke-width="1.5" opacity=".6"/></svg>
-        </div>
-        <div class="pmeta">
-          <span class="cat" style="position:static;display:inline-block;margin-bottom:14px">BETONG</span>
-          <h3>Plasstøpt garasje &amp; grunnmur</h3>
-          <div class="pl">Haugalandet</div>
-        </div>
+        <img src="images/proj-bordforskaling.jpg" alt="Ferdig støttemur i bord-forskaling">
+        <div class="grad"></div>
+        <span class="cat">STØTTEMUR</span><span class="code">PR-02</span>
+        <div class="cap"><h3>Støttemur i bord-forskaling</h3><div class="loc">Haugesund</div></div>
       </div>
       <div class="pcard rv rv-d2">
-        <div class="ph noimg">
-          <svg class="drw" viewBox="0 0 60 60" fill="none"><path d="M6 46h48M6 38h48M6 30h48" stroke="#2E60A8" stroke-width="1.5"/><path d="M12 54V22M30 54V16M48 54V26" stroke="#EAECEE" stroke-width="1.5" opacity=".6"/></svg>
-        </div>
-        <div class="pmeta">
-          <span class="cat" style="position:static;display:inline-block;margin-bottom:14px">UTEROM</span>
-          <h3>Uterom med belegg &amp; trapp</h3>
-          <div class="pl">Haugalandet</div>
-        </div>
+        <img src="images/proj-garasje.jpg" alt="Plasstøpt garasje i bord-forskaling">
+        <div class="grad"></div>
+        <span class="cat">BETONG</span><span class="code">PR-03</span>
+        <div class="cap"><h3>Plasstøpt garasje</h3><div class="loc">Haugalandet</div></div>
       </div>
       <div class="pcard rv rv-d1">
-        <div class="ph noimg">
-          <svg class="drw" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="16" stroke="#2E60A8" stroke-width="1.5"/><path d="M30 14v32M14 30h32" stroke="#EAECEE" stroke-width="1.5" opacity=".6"/></svg>
-        </div>
-        <div class="pmeta">
-          <span class="cat" style="position:static;display:inline-block;margin-bottom:14px">DRENERING</span>
-          <h3>Drenering &amp; masseutskifting</h3>
-          <div class="pl">Haugalandet</div>
-        </div>
+        <img src="images/proj-buet-mur.jpg" alt="Buet betongmur støpt på stedet">
+        <div class="grad"></div>
+        <span class="cat">SPESIAL</span><span class="code">PR-04</span>
+        <div class="cap"><h3>Buet mur — støpt på stedet</h3><div class="loc">Haugalandet · noe unikt</div></div>
       </div>
       <div class="pcard rv rv-d2">
-        <div class="ph noimg">
-          <svg class="drw" viewBox="0 0 60 60" fill="none"><path d="M8 52c6-10 10-14 14-14s6 6 12 6 8-8 18-10" stroke="#2E60A8" stroke-width="1.5"/><path d="M8 52h44" stroke="#EAECEE" stroke-width="1.5" opacity=".6"/></svg>
-        </div>
-        <div class="pmeta">
-          <span class="cat" style="position:static;display:inline-block;margin-bottom:14px">NATURSTEIN</span>
-          <h3>Natursteinsmur &amp; ferdigplen</h3>
-          <div class="pl">Haugalandet</div>
-        </div>
+        <img src="images/proj-hus-garasje.jpg" alt="Vedlikeholdsfri garasje med terrasse i betong">
+        <div class="grad"></div>
+        <span class="cat">GARASJE</span><span class="code">PR-05</span>
+        <div class="cap"><h3>Vedlikeholdsfri garasje med terrasse</h3><div class="loc">Haugalandet</div></div>
+      </div>
+      <div class="pcard rv rv-d1">
+        <img src="images/proj-uterom.jpg" alt="Ferdig uterom med belegningsstein og plen">
+        <div class="grad"></div>
+        <span class="cat">UTEROM</span><span class="code">PR-06</span>
+        <div class="cap"><h3>Ferdig uterom med belegg</h3><div class="loc">Haugalandet</div></div>
+      </div>
+      <div class="pcard rv rv-d2">
+        <img src="images/proj-hage.jpg" alt="Ferdig hage med steintrapp og beplantning">
+        <div class="grad"></div>
+        <span class="cat">UTEROM</span><span class="code">PR-07</span>
+        <div class="cap"><h3>Ferdig hage med trapp</h3><div class="loc">Haugalandet</div></div>
+      </div>
+      <div class="pcard rv rv-d3">
+        <img src="images/proj-stottemur.jpg" alt="Støttemur i naturstein med trapp">
+        <div class="grad"></div>
+        <span class="cat">MUR</span><span class="code">PR-08</span>
+        <div class="cap"><h3>Støttemur, naturstein &amp; trapp</h3><div class="loc">Haugalandet</div></div>
       </div>
     </div>
   </div>
@@ -556,15 +550,22 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
       <div class="num">05 — OM BEDRIFTEN</div>
       <div class="ht"></div>
     </div>
+    <div class="team-banner rv">
+      <img src="images/team.jpg" alt="Mannskapet i Thuen Bygg og Anlegg ved firmabilen">
+      <div class="tb-cap">
+        <b>Egne folk, egne maskiner — fra første støp til siste stein.</b>
+        <span>Thuen Bygg &amp; Anlegg AS · Haugalandet</span>
+      </div>
+    </div>
     <div class="about-grid">
       <div class="about-body rv">
-        <h2>Din partner på <i>grunnen.</i></h2>
-        <p>Thuen Bygg og Anlegg holder til på Haugalandet og tar oppdrag i hele regionen. Vi utfører alt fra grunn- og betongarbeid til murer, drenering og komplette uteanlegg.</p>
-        <p>For oss handler et godt anlegg like mye om det som ligger under bakken som om overflaten du ser. Vi gjør grunnarbeidet skikkelig, holder byggeplassen ryddig, og leverer et resultat som varer — enten du er boligeier eller et byggefirma som trenger en solid medspiller.</p>
+        <h2>Betong som <i>varer.</i></h2>
+        <p>Thuen Bygg &amp; Anlegg AS er en betongentreprenør på Haugalandet. Vi støper støttemurer, garasjer og uteanlegg — og har spesialisert oss på bord-forskaling, der treverket setter et levende, varig preg i betongen.</p>
+        <p>Enten det er en rett mur, en buet spesialstøp eller en vedlikeholdsfri garasje med terrasse, gjør vi grunnarbeidet skikkelig, holder byggeplassen ryddig og leverer et resultat som står. For boligeiere så vel som byggefirma som trenger en solid medspiller.</p>
       </div>
       <div class="about-facts rv rv-d1">
         <div class="afr"><div class="k">Base</div><div class="v">Haugalandet</div></div>
-        <div class="afr"><div class="k">Fag</div><div class="v">Bygg &amp; anlegg<small>Grunn · betong · mur · uteanlegg</small></div></div>
+        <div class="afr"><div class="k">Fag</div><div class="v">Betongentreprenør<small>Bord-forskaling · murer · garasjer · uteanlegg</small></div></div>
         <div class="afr"><div class="k">Område</div><div class="v">Haugalandet &amp; Rogaland</div></div>
         <div class="afr"><div class="k">Oppdrag</div><div class="v">Privat &amp; næring<small>Totalentreprise og underentreprise</small></div></div>
         <div class="afr"><div class="k">Pris</div><div class="v">Fast tilbud — ingen overraskelser</div></div>

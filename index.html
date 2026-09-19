@@ -126,15 +126,15 @@ header.hide{transform:translateY(-102%)}
 .hero .glow{position:absolute;width:58vw;height:58vw;right:-12vw;top:-18vw;border-radius:50%;z-index:1;
   background:radial-gradient(circle,rgba(46,96,168,.15),transparent 62%);pointer-events:none;filter:blur(10px)}
 .hero-inner{position:relative;z-index:3;width:100%;padding-top:104px;padding-bottom:78px;
-  display:grid;grid-template-columns:1.06fr .8fr;gap:clamp(28px,5vw,72px);align-items:center}
-.hero-main{min-width:0}
-.hero-eyrow{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:28px}
-.hero h1{font-family:var(--ff-serif);font-weight:400;font-size:clamp(46px,6.6vw,98px);line-height:.94;letter-spacing:-.03em}
+  display:grid;grid-template-columns:1.06fr .8fr;column-gap:clamp(28px,5vw,72px);row-gap:0;align-items:center;
+  grid-template-areas:"eyrow card" "title card" "sub card" "cta card"}
+.hero-eyrow{grid-area:eyrow;display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.hero h1{grid-area:title;font-family:var(--ff-serif);font-weight:400;font-size:clamp(46px,6.6vw,98px);line-height:.94;letter-spacing:-.03em}
 .hero h1 .r2{display:block}
 .hero h1 i{font-style:italic;color:var(--accent);font-weight:400}
-.hero-sub{color:var(--muted);font-size:clamp(16px,1.4vw,19px);line-height:1.6;max-width:44ch;margin-top:30px}
-.hero-cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
-.hero-card{position:relative;justify-self:end;width:100%;max-width:440px;aspect-ratio:1/1.16;overflow:hidden;border:1px solid var(--line-2);background:var(--bg-2);box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
+.hero-sub{grid-area:sub;color:var(--muted);font-size:clamp(16px,1.4vw,19px);line-height:1.6;max-width:44ch;margin-top:30px}
+.hero-cta{grid-area:cta;display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.hero-card{grid-area:card;position:relative;justify-self:end;align-self:center;width:100%;max-width:440px;max-height:66vh;aspect-ratio:1/1.16;overflow:hidden;border:1px solid var(--line-2);background:var(--bg-2);box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
 .hero-card img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 1.6s var(--ease)}
 .hero-card:hover img{transform:scale(1.05)}
 .hero-card .hc-cap{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:12px;padding:15px 17px;
@@ -314,8 +314,11 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
   .why:nth-child(2){border-right:none}
   .why{border-bottom:1px solid var(--line-cream)}
   .intro-grid,.about-grid,.area-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
-  .hero-inner{grid-template-columns:1fr;gap:clamp(32px,5vw,44px)}
-  .hero-card{justify-self:stretch;max-width:none;aspect-ratio:16/10}
+  .hero-inner{grid-template-columns:1fr;grid-template-areas:none;row-gap:26px;column-gap:0}
+  .hero-eyrow,.hero h1,.hero-card,.hero-sub,.hero-cta{grid-area:auto}
+  .hero-eyrow{margin-bottom:0}
+  .hero-sub,.hero-cta{margin-top:0}
+  .hero-card{justify-self:stretch;align-self:auto;max-width:none;max-height:none;aspect-ratio:16/10}
 }
 @media(max-width:680px){
   body{font-size:16px}
@@ -388,20 +391,18 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
 <section class="hero grid-bg" id="top">
   <span class="glow"></span>
   <div class="wrap hero-inner">
-    <div class="hero-main">
-      <div class="hero-eyrow">
-        <span class="ey">Betongentreprenør på Haugalandet</span>
-      </div>
-      <h1>Betongarbeid<span class="r2"><i>gjort skikkelig.</i></span></h1>
-      <p class="hero-sub">Vi utfører betongarbeid, støttemurer, garasjer og uteanlegg på Haugalandet. Med over 25 års samlet erfaring.</p>
-      <div class="hero-cta">
-        <a href="#prosjekter" class="btn">Se prosjekter <span class="ar">→</span></a>
-        <a href="#kontakt" class="btn ghost">Be om befaring</a>
-      </div>
+    <div class="hero-eyrow">
+      <span class="ey">Betongentreprenør på Haugalandet</span>
     </div>
+    <h1>Betongarbeid<span class="r2"><i>gjort skikkelig.</i></span></h1>
     <div class="hero-card">
       <img src="images/proj-hus-garasje.jpg" alt="Vedlikeholdsfri garasje og terrasse i plasstøpt betong med utsikt">
       <div class="hc-cap"><span>Plasstøpt betong · terrasse</span><span class="r">Haugalandet</span></div>
+    </div>
+    <p class="hero-sub">Vi utfører betongarbeid, støttemurer, garasjer og uteanlegg på Haugalandet. Med over 25 års samlet erfaring.</p>
+    <div class="hero-cta">
+      <a href="#prosjekter" class="btn">Se prosjekter <span class="ar">→</span></a>
+      <a href="#kontakt" class="btn ghost">Be om befaring</a>
     </div>
   </div>
   <div class="hero-foot">

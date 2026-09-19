@@ -123,24 +123,26 @@ header.hide{transform:translateY(-102%)}
 
 /* ================= HERO ================= */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:var(--bg)}
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 46%;z-index:0}
-.hero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:
-  linear-gradient(101deg,rgba(18,20,23,.95) 0%,rgba(18,20,23,.82) 32%,rgba(18,20,23,.46) 62%,rgba(18,20,23,.66) 100%),
-  linear-gradient(to top,rgba(18,20,23,.9) 0%,rgba(18,20,23,.1) 42%,transparent 70%)}
-.hero .glow{position:absolute;width:70vw;height:70vw;right:-18vw;top:-24vw;border-radius:50%;z-index:2;
-  background:radial-gradient(circle,rgba(46,96,168,.20),transparent 62%);pointer-events:none;filter:blur(10px);mix-blend-mode:screen}
-.hero-inner{position:relative;z-index:3;width:100%;padding-top:96px;padding-bottom:56px}
-.hero-eyrow{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:30px}
-.hero h1{font-family:var(--ff-serif);font-weight:400;font-size:clamp(52px,10.5vw,168px);line-height:.92;letter-spacing:-.03em}
+.hero .glow{position:absolute;width:58vw;height:58vw;right:-12vw;top:-18vw;border-radius:50%;z-index:1;
+  background:radial-gradient(circle,rgba(46,96,168,.15),transparent 62%);pointer-events:none;filter:blur(10px)}
+.hero-inner{position:relative;z-index:3;width:100%;padding-top:104px;padding-bottom:78px;
+  display:grid;grid-template-columns:1.06fr .8fr;gap:clamp(28px,5vw,72px);align-items:center}
+.hero-main{min-width:0}
+.hero-eyrow{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.hero h1{font-family:var(--ff-serif);font-weight:400;font-size:clamp(46px,6.6vw,98px);line-height:.94;letter-spacing:-.03em}
 .hero h1 .r2{display:block}
 .hero h1 i{font-style:italic;color:var(--accent);font-weight:400}
-.hero-grid{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;margin-top:44px}
-.hero-sub{color:var(--muted);font-size:clamp(16px,1.5vw,20px);line-height:1.6;max-width:46ch}
-.hero-cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
-.hero-coord{font-family:var(--ff-mono);font-size:12px;color:var(--muted-2);text-align:right;line-height:1.9;letter-spacing:.06em;white-space:nowrap}
+.hero-sub{color:var(--muted);font-size:clamp(16px,1.4vw,19px);line-height:1.6;max-width:44ch;margin-top:30px}
+.hero-cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.hero-card{position:relative;justify-self:end;width:100%;max-width:440px;aspect-ratio:1/1.16;overflow:hidden;border:1px solid var(--line-2);background:var(--bg-2);box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
+.hero-card img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 1.6s var(--ease)}
+.hero-card:hover img{transform:scale(1.05)}
+.hero-card .hc-cap{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:12px;padding:15px 17px;
+  background:linear-gradient(to top,rgba(13,15,18,.94),transparent);font-family:var(--ff-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.hero-card .hc-cap .r{color:var(--accent-2)}
+.hero-coord{font-family:var(--ff-mono);font-size:12px;color:var(--muted-2);letter-spacing:.08em;white-space:nowrap}
 .hero-coord b{color:var(--accent);font-weight:400}
 .hero-foot{position:absolute;left:var(--gutter);right:var(--gutter);bottom:26px;display:flex;justify-content:space-between;align-items:center;z-index:3}
-.hero-est{font-family:var(--ff-mono);font-size:11px;letter-spacing:.16em;color:var(--muted-2);text-transform:uppercase}
 .scroll-ind{font-family:var(--ff-mono);font-size:11px;letter-spacing:.14em;color:var(--muted-2);text-transform:uppercase;display:flex;align-items:center;gap:11px}
 .scroll-ind .ln{width:1px;height:36px;background:var(--line-2);position:relative;overflow:hidden}
 .scroll-ind .ln::after{content:"";position:absolute;top:-36px;left:0;width:100%;height:36px;background:var(--accent);animation:drop 2.6s var(--ease) infinite}
@@ -312,8 +314,8 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
   .why:nth-child(2){border-right:none}
   .why{border-bottom:1px solid var(--line-cream)}
   .intro-grid,.about-grid,.area-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
-  .hero-grid{grid-template-columns:1fr;align-items:start;gap:26px}
-  .hero-coord{text-align:left}
+  .hero-inner{grid-template-columns:1fr;gap:clamp(32px,5vw,44px)}
+  .hero-card{justify-self:stretch;max-width:none;aspect-ratio:16/10}
 }
 @media(max-width:680px){
   body{font-size:16px}
@@ -383,31 +385,28 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
 </div>
 
 <!-- ========== HERO ========== -->
-<section class="hero" id="top">
-  <img class="hero-bg" src="images/proj-hus-garasje.jpg" alt="Vedlikeholdsfri garasje og terrasse i plasstøpt betong med utsikt">
-  <div class="hero-scrim"></div>
+<section class="hero grid-bg" id="top">
   <span class="glow"></span>
   <div class="wrap hero-inner">
-    <div class="hero-eyrow">
-      <span class="ey">Betongentreprenør — Haugalandet</span>
+    <div class="hero-main">
+      <div class="hero-eyrow">
+        <span class="ey">Betongentreprenør — Haugalandet</span>
+      </div>
+      <h1>Fra fjell til<span class="r2"><i>ferdig uterom.</i></span></h1>
+      <p class="hero-sub">Betongentreprenør på Haugalandet. Vi støper støttemurer, garasjer og uteanlegg — fra bord-forskaling til ferdig, vedlikeholdsfritt resultat, med egne folk og egne maskiner.</p>
+      <div class="hero-cta">
+        <a href="#prosjekter" class="btn">Se prosjekter <span class="ar">→</span></a>
+        <a href="#kontakt" class="btn ghost">Be om befaring</a>
+      </div>
     </div>
-    <h1>Fra fjell til<span class="r2"><i>ferdig uterom.</i></span></h1>
-    <div class="hero-grid">
-      <div>
-        <p class="hero-sub">Betongentreprenør på Haugalandet. Vi støper støttemurer, garasjer og uteanlegg — fra bord-forskaling til ferdig, vedlikeholdsfritt resultat, med egne folk og egne maskiner.</p>
-        <div class="hero-cta">
-          <a href="#prosjekter" class="btn">Se prosjekter <span class="ar">→</span></a>
-          <a href="#kontakt" class="btn ghost">Be om befaring</a>
-        </div>
-      </div>
-      <div class="hero-coord">
-        59.41°N<br>05.27°Ø<br><b>HAUGALANDET</b>
-      </div>
+    <div class="hero-card">
+      <img src="images/proj-hus-garasje.jpg" alt="Vedlikeholdsfri garasje og terrasse i plasstøpt betong med utsikt">
+      <div class="hc-cap"><span>Plasstøpt betong · terrasse</span><span class="r">Haugalandet</span></div>
     </div>
   </div>
   <div class="hero-foot">
-    <span class="hero-est">Betongentreprenør — Haugalandet</span>
     <span class="scroll-ind"><span class="ln"></span>Rull ned</span>
+    <span class="hero-coord">59.41°N&nbsp;&nbsp;05.27°Ø</span>
   </div>
 </section>
 

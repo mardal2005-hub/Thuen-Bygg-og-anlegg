@@ -123,8 +123,12 @@ header.hide{transform:translateY(-102%)}
 
 /* ================= HERO ================= */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:var(--bg)}
-.hero .glow{position:absolute;width:70vw;height:70vw;right:-18vw;top:-24vw;border-radius:50%;
-  background:radial-gradient(circle,rgba(46,96,168,.16),transparent 62%);pointer-events:none;filter:blur(10px)}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 46%;z-index:0}
+.hero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+  linear-gradient(101deg,rgba(18,20,23,.95) 0%,rgba(18,20,23,.82) 32%,rgba(18,20,23,.46) 62%,rgba(18,20,23,.66) 100%),
+  linear-gradient(to top,rgba(18,20,23,.9) 0%,rgba(18,20,23,.1) 42%,transparent 70%)}
+.hero .glow{position:absolute;width:70vw;height:70vw;right:-18vw;top:-24vw;border-radius:50%;z-index:2;
+  background:radial-gradient(circle,rgba(46,96,168,.20),transparent 62%);pointer-events:none;filter:blur(10px);mix-blend-mode:screen}
 .hero-inner{position:relative;z-index:3;width:100%;padding-top:96px;padding-bottom:56px}
 .hero-eyrow{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:30px}
 .hero h1{font-family:var(--ff-serif);font-weight:400;font-size:clamp(52px,10.5vw,168px);line-height:.92;letter-spacing:-.03em}
@@ -379,7 +383,9 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
 </div>
 
 <!-- ========== HERO ========== -->
-<section class="hero grid-bg" id="top">
+<section class="hero" id="top">
+  <img class="hero-bg" src="images/proj-hus-garasje.jpg" alt="Vedlikeholdsfri garasje og terrasse i plasstøpt betong med utsikt">
+  <div class="hero-scrim"></div>
   <span class="glow"></span>
   <div class="wrap hero-inner">
     <div class="hero-eyrow">

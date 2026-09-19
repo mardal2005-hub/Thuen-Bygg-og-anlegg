@@ -428,10 +428,10 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
     <div class="intro-grid">
       <p class="intro-state rv">Vi er tre stykker som driver Thuen Bygg og Anlegg. Vi startet opp i 2025, og har <em>over 25 års erfaring med betong til sammen.</em></p>
       <div class="stat-list rv rv-d1">
-        <div class="stat"><div class="sv">25<span class="u">+</span></div><div class="sl">År med erfaring til sammen</div></div>
-        <div class="stat"><div class="sv">3</div><div class="sl">Ansatte</div></div>
-        <div class="stat"><div class="sv">2025</div><div class="sl">Vi startet opp</div></div>
-        <div class="stat"><div class="sv">5,0<span class="u">★</span></div><div class="sl">På Google, av 7 anmeldelser</div></div>
+        <div class="stat"><div class="sv" data-count="25"><span class="num">25</span><span class="u">+</span></div><div class="sl">År med erfaring til sammen</div></div>
+        <div class="stat"><div class="sv" data-count="3"><span class="num">3</span></div><div class="sl">Ansatte</div></div>
+        <div class="stat"><div class="sv" data-count="2025"><span class="num">2025</span></div><div class="sl">Vi startet opp</div></div>
+        <div class="stat"><div class="sv" data-count="5" data-dec="1"><span class="num">5,0</span><span class="u">★</span></div><div class="sl">På Google, av 7 anmeldelser</div></div>
       </div>
     </div>
   </div>
@@ -817,6 +817,38 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding-top:76px}
 
   var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
   document.querySelectorAll('.rv').forEach(function(el){if(rm){el.classList.add('in');}else{io.observe(el);}});
+
+  /* count-up on scroll for intro stats */
+  var statList=document.querySelector('.stat-list');
+  if(statList && !rm){
+    var nums=statList.querySelectorAll('.sv[data-count]');
+    nums.forEach(function(el){el.querySelector('.num').textContent = el.getAttribute('data-dec') ? '0,0' : '0';});
+    var counted=false;
+    var cIO=new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if(e.isIntersecting && !counted){
+          counted=true;
+          nums.forEach(function(el){
+            var target=parseFloat(el.getAttribute('data-count'));
+            var dec=parseInt(el.getAttribute('data-dec')||'0',10);
+            var numEl=el.querySelector('.num');
+            var dur=1500, start=null;
+            function fmt(v){ return dec ? v.toFixed(dec).replace('.',',') : Math.round(v).toString(); }
+            function tick(now){
+              if(start===null) start=now;
+              var p=Math.min(1,(now-start)/dur);
+              var eased=1-Math.pow(1-p,3);
+              numEl.textContent=fmt(target*eased);
+              if(p<1){ requestAnimationFrame(tick); } else { numEl.textContent=fmt(target); }
+            }
+            requestAnimationFrame(tick);
+          });
+          cIO.disconnect();
+        }
+      });
+    },{threshold:.45});
+    cIO.observe(statList);
+  }
 
   var form=document.getElementById('beforingForm');
   form.addEventListener('submit',function(ev){
